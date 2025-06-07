@@ -3,9 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Django migrations
-**/migrations/
-
 # Django static and media files (if generated)
 staticfiles/
 media/
