@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: drf_api_db
+    environment:
+      POSTGRES_DB: drf_api_db
+      POSTGRES_USER: drf_api_user
+      POSTGRES_PASSWORD: drf_api_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - drf_api_network
+
+  web:
+    build: .
+    container_name: drf_api_web
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DEBUG=1
+      - DJANGO_DB_HOST=db
+      - DJANGO_DB_NAME=drf_api_db
+      - DJANGO_DB_USER=drf_api_user
+      - DJANGO_DB_PASSWORD=drf_api_pass
+    networks:
+      - drf_api_network
+
+volumes:
+  postgres_data:
+
+networks:
+  drf_api_network:
