@@ -52,9 +52,7 @@ class Migration(migrations.Migration):
                 (
                     "created_by",
                     models.ForeignKey(
-                        blank=True,
-                        null=True,
-                        on_delete=django.db.models.deletion.SET_NULL,
+                        on_delete=django.db.models.deletion.DO_NOTHING,
                         related_name="%(class)s_created",
                         to=settings.AUTH_USER_MODEL,
                     ),
@@ -102,9 +100,7 @@ class Migration(migrations.Migration):
                 (
                     "created_by",
                     models.ForeignKey(
-                        blank=True,
-                        null=True,
-                        on_delete=django.db.models.deletion.SET_NULL,
+                        on_delete=django.db.models.deletion.DO_NOTHING,
                         related_name="%(class)s_created",
                         to=settings.AUTH_USER_MODEL,
                     ),

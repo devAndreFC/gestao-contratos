@@ -5,10 +5,8 @@ from django.conf import settings
 class BaseModel(models.Model):
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.SET_NULL,
+        models.DO_NOTHING,
         related_name="%(class)s_created",
-        null=True,
-        blank=True,
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_by = models.ForeignKey(
