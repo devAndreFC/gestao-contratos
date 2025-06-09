@@ -53,12 +53,12 @@ class Command(BaseCommand):
                         "Belo Horizonte",
                         "Porto Alegre",
                         "Salvador",
+                        "Amazonnas",
                     ]
                 ),
                 numero_telefone=gerar_telefone(),
                 taxa_contrato=taxa,
                 created_by=user,
-                updated_by=user,
             )
             self.stdout.write(self.style.SUCCESS(f"Contrato {contrato.id} criado"))
 
@@ -71,7 +71,6 @@ class Command(BaseCommand):
                     valor_parcela=valor_parcela,
                     data_vencimento=data_vencimento,
                     created_by=user,
-                    updated_by=user,
                 )
             self.stdout.write(
                 self.style.SUCCESS(f"10 parcelas criadas para contrato {contrato.id}")

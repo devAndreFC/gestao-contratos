@@ -30,10 +30,13 @@ class ContratoSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         parcelas_data = validated_data.pop("parcelas", [])
         contrato = Contrato.objects.create(**validated_data)
-        print("user data ", validated_data["created_by"])
-        print(9/0)
+        created_by = validated_data["created_by"]
         for parcela_data in parcelas_data:
-            Parcela.objects.create(contrato=contrato, created_by=validated_data["created_by"]**parcela_data)
+            Parcela.objects.create(
+                contrato=contrato,
+                created_by=created_by,
+                **parcela_data,
+            )
         return contrato
 
     def update(self, instance, validated_data):
@@ -67,3 +70,10 @@ class ContratoListSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_total_parcelas(self, obj):
         return obj.parcelas.count()
+
+
+class ContratoResumoSerializer(serializers.Serializer):
+    valor_total_a_receber = serializers.FloatField()
+    valor_total_desembolsado = serializers.FloatField()
+    numero_total_contratos = serializers.IntegerField()
+    taxa_media = serializers.FloatField()
