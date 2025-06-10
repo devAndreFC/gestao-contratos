@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
                     "valor_desembolsado",
                     models.DecimalField(decimal_places=2, max_digits=12),
                 ),
-                ("numero_documento", models.CharField(max_length=14)),
+                ("cpf", models.CharField(max_length=14)),
                 ("pais", models.CharField(max_length=50)),
                 ("estado", models.CharField(max_length=50)),
                 ("cidade", models.CharField(max_length=50)),

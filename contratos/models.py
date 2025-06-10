@@ -26,7 +26,7 @@ class Contrato(BaseModel):
     data_emissao = models.DateField()
     data_nascimento_tomador = models.DateField()
     valor_desembolsado = models.DecimalField(max_digits=12, decimal_places=2)
-    numero_documento = models.CharField(max_length=14)
+    cpf = models.CharField(max_length=14)
     pais = models.CharField(max_length=50)
     estado = models.CharField(max_length=50)
     cidade = models.CharField(max_length=50)
@@ -34,7 +34,7 @@ class Contrato(BaseModel):
     taxa_contrato = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        return f"Contrato {self.id} - {self.numero_documento}"
+        return f"Contrato {self.id} - {self.cpf}"
 
 
 class Parcela(BaseModel):

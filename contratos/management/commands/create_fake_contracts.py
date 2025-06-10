@@ -43,7 +43,7 @@ class Command(BaseCommand):
                 data_emissao=data_emissao,
                 data_nascimento_tomador=data_nasc,
                 valor_desembolsado=valor_desembolsado,
-                numero_documento=gerar_cpf(),
+                cpf=gerar_cpf(),
                 pais="Brasil",
                 estado=random.choice(["SP", "RJ", "MG", "RS", "BA"]),
                 cidade=random.choice(

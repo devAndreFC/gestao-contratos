@@ -42,22 +42,14 @@ A API estará disponível em:
 
 ---
 
-## 🧪 Criando um superusuário
-
-Após subir os containers, entre no container web:
-
-```bash
-docker compose exec web python manage.py createsuperuser
-```
-
----
 
 ## ⚙️ Populando dados de exemplo
 
 Crie 20 contratos fictícios (com 10 parcelas cada):
 
 ```bash
-docker compose exec web python manage.py shell
+docker compose exec web python manage.py create_fake_contracts
+
 ```
 
 No shell interativo, rode:
@@ -66,7 +58,11 @@ No shell interativo, rode:
 from contratos.management.commands.populate_data import Command
 Command().handle()
 ```
+Para rodar os testes:
+docker compose exec web coverage run manage.py test
 
+Para ter acesso ao html do coverage:
+docker compose exec web coverage html
 ---
 
 **Autor:** [devAndreFC](https://github.com/devAndreFC)

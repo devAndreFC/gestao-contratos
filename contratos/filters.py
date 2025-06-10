@@ -5,7 +5,7 @@ from contratos.models import Contrato
 
 class ContratosFilter(django_filters.FilterSet):
     id = django_filters.NumberFilter(field_name="id", lookup_expr="exact")
-    cpf = django_filters.CharFilter(field_name="numero_documento", lookup_expr="exact")
+    cpf = django_filters.CharFilter(field_name="cpf", lookup_expr="exact")
     estado = django_filters.CharFilter(field_name="estado", lookup_expr="iexact")
 
     data = django_filters.CharFilter(method="filter_data")
