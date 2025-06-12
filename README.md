@@ -19,7 +19,7 @@ cd gestao-contratos
 docker compose up --build
 ```
 
-A aplicação já cadastra o primeiro usuário automaticamente:
+🔐 A aplicação já cadastra o primeiro usuário automaticamente:
 
 * 👤 **Usuário:** `admin`
 * 🔒 **Senha:** `admin`
@@ -48,10 +48,9 @@ docker compose exec web python manage.py create_fake_contracts
 ## 🔐 Autenticação
 
 * ⚙️ **Admin:** [http://localhost:8000/admin/](http://localhost:8000/admin/)
-
 * 🛡️ **JWT Token:**
 
-  * Obtenha um token em: `/api/token/`
+  * Obtenha o token em: `/api/token/`
   * Atualize o token em: `/api/token/refresh/`
 
 > **Nota:** A API exige autenticação via **JWT** ou **sessão** para acessar rotas protegidas.
@@ -66,11 +65,14 @@ Execute os testes com cobertura:
 docker compose exec web coverage run manage.py test
 ```
 
-Para visualizar o relatório HTML de cobertura:
+Para gerar o relatório de cobertura em HTML:
 
 ```bash
 docker compose exec web coverage html
 ```
+
+📂 O relatório será gerado na pasta `htmlcov`.
+Abra o arquivo `htmlcov/index.html` no navegador para visualizar os resultados.
 
 ---
 
